@@ -25,12 +25,12 @@ ds <- read.csv.sql(rawPowerData, sep = ";", sql = 'select * from file where Date
 ds$Date <- strptime(paste(ds$Date, ds$Time), "%d/%m/%Y %H:%M:%S")
 
 # Create a new blank PNG file:
-png(file = "plot1.png", width = 480, height = 480, units = 'px')
+png(file = "plot1.png", width = 480, height = 480, units = 'px', bg = "transparent")
 # I also make pngs at 504 X 504 to compare them to the original files for accuracy
 
 # Plot a histogram:
 # I'm making it transparent just to match what's in the example:
-with(ds, hist(Global_active_power, main = "Global Active Power", xlab = "Global Active Power (kilowatts)", col = "red", bg = "transparent"))
+with(ds, hist(Global_active_power, main = "Global Active Power", xlab = "Global Active Power (kilowatts)", col = "red"))
 
 # Close the graphics connection to finish the file:
 dev.off()
