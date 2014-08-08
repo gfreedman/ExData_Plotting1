@@ -23,13 +23,14 @@ ds$Date <- strptime(paste(ds$Date, ds$Time), "%d/%m/%Y %H:%M:%S")
 
 # Create a new blank PNG file:
 png(file = "plot3.png", width = 480, height = 480, bg = "transparent", units = 'px')
-# I also make pngs at 504 X 504 to compare them to the original files for accuracy
+# I also made a png at 504 X 504 to compare them to the original files for accuracy
 
-# Plot a histogram:
-# I'm making it transparent just to match what's in the example:
+# Plot a histogram with three plots on one graph:
 with(ds, plot(Date, Sub_metering_1, type="s", ylab="Energy sub metering", xlab="", col="black"))
 with(ds, lines(Date, Sub_metering_2, type="s", ylab="Energy sub metering", xlab="", col="red"))
 with(ds, lines(Date, Sub_metering_3, type="s", ylab="Energy sub metering", xlab="", col="blue"))
+
+# add the legend per the assignment requirements:
 legend("topright", lty=c(1,1), col = c("black", "blue", "red"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
 # Close the graphics connection to finish the file:

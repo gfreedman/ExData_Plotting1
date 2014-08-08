@@ -23,11 +23,9 @@ ds$Date <- strptime(paste(ds$Date, ds$Time), "%d/%m/%Y %H:%M:%S")
 
 # Create a new blank PNG file:
 png(file = "plot4.png", width = 480, height = 480, bg = "transparent", units = 'px')
-# I also make pngs at 504 X 504 to compare them to the original files for accuracy
+# I also made a png at 504 X 504 to compare it to the original files for accuracy
 
-# Plot a histogram:
-# I'm making it transparent just to match what's in the example:
-
+# Plot four graphs into one graphics device (png)
 par(mfrow = c(2, 2), mar = c(5, 4, 4, 2), oma = c(0, 0, 0, 0))
 with(ds, {
   # plot 1:
