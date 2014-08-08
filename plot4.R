@@ -22,12 +22,13 @@ ds <- read.csv.sql(rawPowerData, sep = ";", sql = 'select * from file where Date
 ds$Date <- strptime(paste(ds$Date, ds$Time), "%d/%m/%Y %H:%M:%S")
 
 # Create a new blank PNG file:
-png(file = "plot4.png", width = 480, height = 480, bg = "transparent")
+png(file = "plot4.png", width = 480, height = 480, bg = "transparent", units = 'px')
+# I also make pngs at 504 X 504 to compare them to the original files for accuracy
 
 # Plot a histogram:
 # I'm making it transparent just to match what's in the example:
 
-par(mfrow = c(2, 2), mar = c(5, 4, 4, 2), oma = c(1, 0, 1, 1))
+par(mfrow = c(2, 2), mar = c(5, 4, 4, 2), oma = c(0, 0, 0, 0))
 with(ds, {
   # plot 1:
   plot(Date, Global_active_power, type = "l", ylab = "Global Active Power", xlab = "")
@@ -39,7 +40,7 @@ with(ds, {
   plot(Date, Sub_metering_1, type="s", ylab="Energy sub metering", xlab="", col="black")
   lines(Date, Sub_metering_2, type="s", ylab="Energy sub metering", xlab="", col="red")
   lines(Date, Sub_metering_3, type="s", ylab="Energy sub metering", xlab="", col="blue")
-  legend("topright", lty = c(1,1), cex = 0.9, bty = "n", col = c("black", "blue", "red"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))  
+  legend("topright", lty = c(1,1), cex = 1.0, bty = "n", col = c("black", "blue", "red"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))  
   
   # plot 4:
   plot(Date, Global_reactive_power, type = "l", ylab = "Global_reactive_power", xlab = "datetime")

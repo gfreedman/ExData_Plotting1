@@ -22,7 +22,8 @@ ds <- read.csv.sql(rawPowerData, sep = ";", sql = 'select * from file where Date
 ds$Date <- strptime(paste(ds$Date, ds$Time), "%d/%m/%Y %H:%M:%S")
 
 # Create a new blank PNG file:
-png(file = "plot2.png", width = 480, height = 480, bg = "transparent")
+png(file = "plot2.png", width = 480, height = 480, bg = "transparent", units = 'px')
+# I also make pngs at 504 X 504 to compare them to the original files for accuracy
 
 # Plot a histogram:
 # I'm making it transparent just to match what's in the example:
